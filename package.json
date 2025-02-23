@@ -1,0 +1,26 @@
+{
+  "name": "nopcommerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test-ui": "npx playwright test tests/ui/",
+    "test-ui-c": "npx playwright test tests/ui/specs/ --headed --project=chromium",
+    "test-ui-h": "npx playwright test tests/ui/specs/ --headed",
+    "test-ui-f": "npx playwright test tests/ui/specs/ --headed --project=firefox",
+    "test-ui-s": "npx playwright test tests/ui/specs/ --headed --project=safari",
+    "test-ui-w": "npx playwright test tests/ui/specs/ --headed --project=webkit",
+    "test-ui-smoke": "npx playwright test --grep '@smoke'",
+    "test-ui-regression": "npx playwright test --grep '@regression'",
+    "test-ui-except-smoke": "npx playwright test --grep-invert '@smoke'",
+    "test-ui-except-regression": "npx playwright test --grep-invert '@regression'",
+    "test-ui-except-smoke-regression": "npx playwright test --grep-invert '@smoke|@regression'"  
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.5"
+  }
+}
