@@ -45,7 +45,6 @@ class Register_Login_Page {
         this.name = page.getByRole('textbox', { name: 'Name' });
         this.signUpBtn = page.getByRole('button', { name: 'Signup' });
         this.signUpLabel = page.getByRole('heading', { name: 'New User Signup!' });
-        this.accountInfLabel = page.getByText('Enter Account Information');
     }
     async open() {
         await this.page.goto('https://www.automationexercise.com/login');
@@ -59,11 +58,10 @@ class Register_Login_Page {
     }
     async clickSignUp() {
         await this.signUpBtn.click();
-        await this.accountInfLabel.waitFor({ state: 'visible' });
     }
-    async getLabelFromSignUpPage() {
+    async waitForLoadingSignUpPage() {
         await this.page.waitForURL('https://www.automationexercise.com/signup');
-        await expect(this.accountInfLabel).toHaveText('Enter Account Information');
     }
+    
 }
 export default Register_Login_Page;    

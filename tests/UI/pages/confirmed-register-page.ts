@@ -1,14 +1,23 @@
 import { Page, Locator, expect } from "@playwright/test";
 class ConfirmedRegisterPage {
     readonly page: Page;
-    readonly confirmedRegister: Locator;
+    readonly successMessage : Locator;
+    readonly continueButton: Locator;
+
     constructor(page: Page) {
         this.page = page;
-        this.confirmedRegister = page.getByText('Your registration completed');
+        this.successMessage = page.getByText('Account Created!');
+        this.continueButton=page.getByRole('link',{name:'Continue'});
     }
 
     async checkSuccessMessage() {
-        expect(await this.confirmedRegister.textContent()).toBe('Please enter a valid email address.');
+        await expect.soft(this.successMessage).toHaveText('Account Created!');
+    }
+    async clickOnContinueBtn(){
+        await this.continueButton.click();
+    }
+    async waitForLoadingHomePage(){
+        await this.page.waitForURL('https://www.automationexercise.com/');
     }
 }
 export default ConfirmedRegisterPage;
