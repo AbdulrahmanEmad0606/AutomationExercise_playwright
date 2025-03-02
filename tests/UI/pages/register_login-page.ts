@@ -1,5 +1,5 @@
 import { expect, Locator, Page } from "@playwright/test";
-
+import userData from "../../data/user-data";
 /**
  * Represents the Register/Login page of the application.
  * Provides methods to interact with the registration and login elements.
@@ -52,11 +52,9 @@ class Register_Login_Page {
     async getSignUpLabel() {
         await expect(this.signUpLabel).toHaveText('New User Signup!');
     }
-    async fillSignUpForm(name: string, email: string) {
-        await this.name.fill(name);
-        await this.email.fill(email);
-    }
-    async clickSignUp() {
+    async fillSignUpForm(userName:string,mail:string ) {
+        await this.name.fill(userName);
+        await this.email.fill(mail);
         await this.signUpBtn.click();
     }
     async waitForLoadingSignUpPage() {
