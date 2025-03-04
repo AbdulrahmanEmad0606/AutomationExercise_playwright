@@ -1,38 +1,20 @@
 import { expect, Locator, Page } from "@playwright/test";
-import userData from "../../data/user-data";
-/**
- * Represents the Register/Login page of the application.
- * Provides methods to interact with the registration and login elements.
- */
+
 class Register_Login_Page {
-    /**
-     * The Playwright Page object.
-     */
+  
     readonly page: Page;
 
-    /**
-     * Locator for the email input field within the signup form.
-     */
-    readonly email: Locator;
+   readonly email: Locator;
 
-    /**
-     * Locator for the name input field.
-     */
+   
     readonly name: Locator;
 
-    /**
-     * Locator for the "New User Signup!" heading.
-     */
     readonly signUpLabel: Locator;
 
-    /**
-     * Locator for the signup button.
-     */
+    
     readonly signUpBtn: Locator;
 
-    /**
-     * Locator for the "Enter Account Information" label.
-     */
+    
     readonly accountInfLabel: Locator;
 
  
@@ -56,6 +38,8 @@ class Register_Login_Page {
         await this.name.fill(userName);
         await this.email.fill(mail);
         await this.signUpBtn.click();
+    }
+    async clickSignUp(){
     }
     async waitForLoadingSignUpPage() {
         await this.page.waitForURL('https://www.automationexercise.com/signup');

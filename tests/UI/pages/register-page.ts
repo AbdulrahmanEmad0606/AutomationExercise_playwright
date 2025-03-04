@@ -1,7 +1,6 @@
 import { Locator, Page, expect } from "@playwright/test";
 import Register_login from "../pages/register_login-page";
 
-
 let register_login: Register_login;
 class RegisterPage {
     readonly page: Page;
@@ -24,6 +23,7 @@ class RegisterPage {
     readonly mobile: Locator;
     readonly registerButton: Locator;
     readonly successMessage: Locator;
+
 
     constructor(page: Page) {
         this.page = page;
@@ -53,15 +53,10 @@ class RegisterPage {
     async open() {
         await this.page.goto('https://www.automationexercise.com/signup');
     }
-    async fillinputs() {
-        let userName,mail;
-        register_login = new Register_login(this.page);
-        await register_login.open();
-        await register_login.fillSignUpForm(userName,mail);
-    }
+    
     async selectGender(gender: string) {
         if (gender === 'Mr.') {
-            await this.genderMale.check();  
+            await this.genderMale.check();
         } else if (gender === 'Mrs.') {
             await this.genderFemale.check();
         }
@@ -107,8 +102,11 @@ class RegisterPage {
     }
     async fillMobile(mobile: string) {
         await this.mobile.fill(mobile);
+
+
     }
     async clickRegisterButton() {
+
         await this.registerButton.click();
     }
 
