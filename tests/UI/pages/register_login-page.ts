@@ -1,5 +1,5 @@
 import { expect, Locator, Page } from "@playwright/test";
-
+import pagesURLs from "../utils/pagesURLs";
 class Register_Login_Page {
   
     readonly page: Page;
@@ -29,7 +29,7 @@ class Register_Login_Page {
         this.signUpLabel = page.getByRole('heading', { name: 'New User Signup!' });
     }
     async open() {
-        await this.page.goto('https://www.automationexercise.com/login');
+        await this.page.goto(pagesURLs.loginPage);
     }
     async getSignUpLabel() {
         await expect(this.signUpLabel).toHaveText('New User Signup!');
@@ -42,7 +42,7 @@ class Register_Login_Page {
     async clickSignUp(){
     }
     async waitForLoadingSignUpPage() {
-        await this.page.waitForURL('https://www.automationexercise.com/signup');
+        await this.page.waitForURL(pagesURLs.register);
     }
     
 }

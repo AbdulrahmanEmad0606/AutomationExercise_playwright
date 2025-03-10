@@ -1,5 +1,5 @@
 import{Page, Locator, expect} from '@playwright/test';
-
+import pagesURL from '../utils/pagesURLs';
 class HomePage {
     readonly page: Page;
     readonly register_login_Button: Locator;
@@ -14,7 +14,7 @@ class HomePage {
       }
 
     async open() {
-        await this.page.goto('https://www.automationexercise.com/');
+        await this.page.goto(pagesURL.homePage);
     }
     async checkLoggedInAsBtn(){
        await expect.soft(this.loggedInAs).toBeVisible();
