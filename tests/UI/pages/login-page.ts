@@ -1,16 +1,14 @@
-import { Location, Locator, Page, expect } from '@playwright/test'
-
+import {Locator, Page } from '@playwright/test'
+import { expect} from "../Fixtures/login-fixture";
 import pagesUrl from '../utils/pagesURLs';
 class LoginPage {
     /**Locators */
-
-    readonly page: Page;
     readonly loginHeader: Locator;
     readonly emailAdress: Locator;
     readonly password: Locator;
     readonly loginBtn: Locator;
     /**Constractor */
-    constructor(page: Page) {
+    constructor(readonly page: Page) {
         this.page = page;
         this.loginHeader = page.getByRole('heading', { name: 'Login to your account' });
         this.emailAdress = page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address');
@@ -24,5 +22,18 @@ class LoginPage {
     async getLoginLabel() {
         await expect(this.loginHeader).toHaveText('Login to your account');
     }
-}
+    async fillEmailAdress(email: string) {
+        await this.emailAdress.fill(email);
+    }
+    async fillPassword(password: string) {
+        await this.password.fill(password);
+    }
+    async clickLoginBtn() {
+        await this.loginBtn.click();
+    }
+    async waitForLoadingHomePage() {
+            await this.page.waitForURL(pagesUrl.homePage);
+    }
+    
+}   
 export default LoginPage;

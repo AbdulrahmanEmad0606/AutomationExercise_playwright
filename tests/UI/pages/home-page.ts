@@ -9,7 +9,7 @@ class HomePage {
     constructor(page: any) {
         this.page = page;
         this.register_login_Button=page.getByRole('link', { name: ' Signup / Login' });
-        this.loggedInAs=page.getByText('Logged in as test');  
+        this.loggedInAs=page.getByText('Logged in as Abdulrahman Emad#');  
         this.deleteAccount=page.getByRole('link',{name:' Delete Account'});
       }
 

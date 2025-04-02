@@ -1,5 +1,4 @@
 import { time } from "console";
-
 export default {
     invalidPassword: 'invalid_password',
     invalidUsername: 'invalid_user',
@@ -19,6 +18,7 @@ export default {
     city: 'Riyadh',
     state: 'Sahafa',
     zipcode: '123456',
-    mobile: '252333333'
-
+    mobile: '252333333',
+    insertedEmail:`aemad@youxel.com`,
+    insertedPassword:`123456`,
 };

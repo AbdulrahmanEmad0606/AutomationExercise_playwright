@@ -22,13 +22,13 @@ test.beforeEach(async ({ page }) => {
 test.describe('Register New user!', () => {
     test('Register New User', async ({ }) => {
 
-        register_login.fillSignUpForm(userData.firstName, userData.validMail)
+        register_login.fillSignUpForm(userData.firstName, userData.insertedEmail)
         register_login.waitForLoadingSignUpPage();
         await registerPage.fillRegisterForm
             (userData.genderMale,
-                userData.firstName, userData.lastName,
+                userData.firstName,
                 userData.lastName, userData.company, userData.address, userData.address2,
-                userData.city, userData.state, userData.zipcode, userData.mobile
+                userData.city, userData.state, userData.zipcode, userData.mobile,userData.insertedPassword
             );
         await registerPage.waitForLoadingAccountCreatedPage();
         await confirmedRegisterPage.checkSuccessMessage();
@@ -41,3 +41,4 @@ test.describe('Register New user!', () => {
         await deleteAccountPage.checkDeleteAccountLabel();
     })
 })
+// Removed export as registerPage is assigned dynamically in beforeEach
